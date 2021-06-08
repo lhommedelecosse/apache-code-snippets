@@ -1,5 +1,9 @@
-RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^http://(www\.)?constructuk\.com/ [NC]
-RewriteCond %{REQUEST_URI} !hotlink\.(doc|xls|pdf|xlsx|docx) [NC]
-RewriteCond %{HTTP_COOKIE} !^.*wordpress_logged_in.*$ [NC]
-RewriteRule .*\.(doc|xls|pdf|xlsx|docx)$ http://constructuk.com/ [NC]
+# BEGIN Wordpress Direct File Download protection
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_REFERER} !^http://(www\.)?constructuk\.com/ [NC]
+    RewriteCond %{REQUEST_URI} !hotlink\.(doc|xls|pdf|xlsx|docx) [NC]
+    RewriteCond %{HTTP_COOKIE} !^.*wordpress_logged_in.*$ [NC]
+    RewriteRule .*\.(doc|xls|pdf|xlsx|docx)$ http://constructuk.com/ [NC]
+</IfModule>
+# END Wordpress Direct File Download protection
